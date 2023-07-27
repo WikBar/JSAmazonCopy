@@ -70,16 +70,13 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
 
     const selector = document.querySelector(`.js-product-quantity-${productId}`);
     let quantity = Number(selector.value);
-  
 
-console.log(quantity)
 
     cart.forEach((item)=>{
       if(item.productId===productId){
         matchingItem=item;
       }
     });
-    // console.log(matchingItem)
 
       if(matchingItem)
       {
@@ -95,14 +92,9 @@ console.log(quantity)
         totalQuantity+=item.quantity;
       })
 
-      console.log(cart)
-      console.log(totalQuantity)
       
       document.body.querySelector('.js-cart-quantity').innerHTML=totalQuantity
       
   });
 });
 
-
-
-// console.log(htmlProducts)
