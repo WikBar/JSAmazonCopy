@@ -1,11 +1,11 @@
-import { cart ,addToCart } from '../data/cart.js';
+import { addToCart } from '../data/cart.js';
 import { products } from '../data/products.js';
-
+import { fixedPrice } from '../data/utils.js';
 let htmlProducts = '';
 
 products.forEach((product)=>{
     const stars=product.rating.stars*10;
-    const dolars=(product.priceCents/100).toFixed(2);
+
     htmlProducts += `<div class="product-container">
     <div class="product-image-container">
       <img class="product-image"
@@ -25,7 +25,7 @@ products.forEach((product)=>{
     </div>
 
     <div class="product-price">
-      $${dolars}
+      $${fixedPrice(product.priceCents)}
     </div>
 
     <div class="product-quantity-container">
@@ -57,7 +57,7 @@ products.forEach((product)=>{
   </div>`
 })
 
-document.querySelector(".js-products-grid").innerHTML=htmlProducts
+document.querySelector(".js-products-grid").innerHTML=htmlProducts;
 
 
 addToCart();
