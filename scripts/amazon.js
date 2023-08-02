@@ -1,4 +1,4 @@
-import { addToCart } from '../data/cart.js';
+import  { totalQuantity, addToCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { fixedPrice } from '../data/utils.js';
 let htmlProducts = '';
@@ -60,4 +60,10 @@ products.forEach((product)=>{
 document.querySelector(".js-products-grid").innerHTML=htmlProducts;
 
 
+
+document.querySelector(".js-cart-quantity").innerHTML=totalQuantity()>0?totalQuantity():null;
+
+
+
+          
 addToCart();

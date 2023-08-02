@@ -1,5 +1,12 @@
-export let cart= JSON.parse(localStorage.getItem('cart'))||[];
+export let cart= JSON.parse(localStorage.getItem('cart'))||[]
 
+export function totalQuantity(){
+  let totalQuantity=0;
+  cart.forEach((item)=>
+      totalQuantity+=item.quantity
+  )
+  return totalQuantity
+}
   
 
 
@@ -52,13 +59,13 @@ export function addToCart(){
             });
           };
 
-          let totalQuantity=0;
-          cart.forEach((item)=>{
-            totalQuantity+=item.quantity;
-          })
-          saveToStorage() 
+          // let totalQuantity=0;
+          // cart.forEach((item)=>{
+          //   totalQuantity+=item.quantity;
+          // })
+          saveToStorage()
           
-          document.body.querySelector('.js-cart-quantity').innerHTML=totalQuantity})
+          document.body.querySelector('.js-cart-quantity').innerHTML=totalQuantity()>0?totalQuantity():null})
           
       });
 }
@@ -75,4 +82,6 @@ export function removeFromCart(item){
 
   cart=newCart
   saveToStorage()
+  document.querySelector('.js-return-to-home-link').innerHTML=totalQuantity()>0?totalQuantity():null;
+
 }

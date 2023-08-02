@@ -1,6 +1,11 @@
-import { cart, removeFromCart } from '../data/cart.js';
+import { totalQuantity, cart, removeFromCart } from '../data/cart.js';
 import {products} from '../data/products.js';
 import { fixedPrice } from './utils.js';
+
+
+
+
+
 
 let documentHTML="";
 
@@ -96,6 +101,7 @@ cart.forEach((cartItem)=>{
         }})
            
 document.querySelector('.order-summary').innerHTML=documentHTML
+document.querySelector('.js-return-to-home-link').innerHTML=totalQuantity()>0?totalQuantity():null;
       
 document.querySelectorAll('.js-delete-quantity-link').forEach((link)=>{
   link.addEventListener('click',()=>{
